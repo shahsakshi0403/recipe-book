@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
-//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//import { HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { HTTP_INTERCEPTORS } from '@angular/common/http';
 //import { AuthComponent } from './auth/auth.component';
 
 // import { RecipesComponent } from './recipes/recipes.component';
@@ -27,14 +27,16 @@ import { HeaderComponent } from './header/header.component';
 //import { ShoppingListService } from './shopping-list/shopping-list.service';
 //import { RecipeService } from './recipes/recipe.service';
 //import { AuthInterceptorService } from './auth/auth-interceptor.service';
-
-import { AppRoutingModule } from './app-routing.module';
 //import { RecipesModule } from './recipes/recipes.module';
 //import { ShoppingListModule } from './shopping-list/shopping-list.module';
 //import { AuthModule } from './auth/auth.module';
+
+import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
 import { LoggingService } from './logging.service';
+import { StoreModule } from '@ngrx/store';
+import * as fromApp from './store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -57,16 +59,17 @@ import { LoggingService } from './logging.service';
     //DropdownDirective,
   ],
   imports: [
+    HttpClientModule,
+    AppRoutingModule,
+    SharedModule,
+    CoreModule,
+    StoreModule.forRoot(fromApp.appReducer),
     BrowserModule,
     //FormsModule,
-    HttpClientModule,
     //ReactiveFormsModule,
-    AppRoutingModule,
     //RecipesModule,
     //ShoppingListModule,
     //AuthModule,
-    SharedModule,
-    CoreModule
   ],
   providers: [
     LoggingService

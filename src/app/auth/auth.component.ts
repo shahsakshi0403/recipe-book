@@ -1,5 +1,5 @@
 import { PlaceholderDirective } from './../shared/placeholder/placeholder.directive';
-import { Params, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { AuthResponseData, AuthService } from './auth.service';
